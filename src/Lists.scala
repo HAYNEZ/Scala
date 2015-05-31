@@ -1,8 +1,13 @@
 object Lists {
 
   def main(args: Array[String]) {
-    val list0 = List(1,5,10)
-    print(countChange(20,list0))
+//    val list0 = List(5,2,1)
+//    println(countChangeList(10,list0))
+//    print("hello")
+//    println(list0)
+//    val lol = List(Nil)
+    val list1 = List(1,2,3)
+//    println(lol::list1)
 //    
 //   
 //    val insertSorted = insertSort(list0)
@@ -26,13 +31,23 @@ object Lists {
 //    val test = uniqlist(list0)
 //    test.foreach(println)
 //     println("Hello")
-     if( balanced(("()()()()").toList)){
-     print("balanced!")}
-    else {
-      print("Unbalanced!")
-    }
+//     if( balanced(("()()()()").toList)){
+//     print("balanced!")}
+//    else {
+//      print("Unbalanced!")
+//    }
+    
+    print(filter(list1,(x:Int) => x == 1))
   }
   
+  
+  
+  
+  def filter (l: List[Int], bleibtdrin: Int => Boolean): List[Int] ={
+    if (l.tail == Nil) Nil
+    else if (bleibtdrin(l.head)) l.head :: filter(l.tail,bleibtdrin)
+    else filter(l.tail,bleibtdrin)
+  }
   
   
   
@@ -244,15 +259,81 @@ def loop(money: Int, lcoins: List[Int], count: Int): Int = {
     if (money == 0 ) count + 1   
 /* if the recursive subtraction leads to 0 money left - a prefect division hence return count +1 */
     else
+      
 /* keep iterating ... sum over money and the rest of the coins and money - the first item and the full set of coins left*/
       loop(money, lcoins.tail,count) + loop(money - lcoins.head,lcoins, count)
   }
 }
 
 val x = loop(money, coins, 0)
-Console println x
+
 x
 }
       
       
+      
+      
+      
+      
+            def countChangeComb(money: Int, coins: List[Int]): Int = {
+
+def loop(money: Int, lcoins: List[Int], count: Int,combinations:  List[Int] ): Int = {
+  // if there are no more coins or if we run out of money ... return 0 
+  if ( lcoins.isEmpty || money < 0) 0
+  else{
+    if (money == 0 ) {println(combinations)
+      count + 1
+      
+    }
+/* if the recursive subtraction leads to 0 money left - a prefect division hence return count +1 */
+    else
+     
+/* keep iterating ... sum over money and the rest of the coins and money - the first item and the full set of coins left*/
+      loop(money, lcoins.tail,count,combinations) + loop(money - lcoins.head,lcoins, count,lcoins.head::combinations)
+  }
+}
+
+val x = loop(money, coins, 0, Nil)
+
+x
+}
+ 
+            
+            
+//          
+//            def countChangeList(money: Int, coins: List[Int]): List[List[Int]] = {
+//
+//def loop(money: Int, lcoins: List[Int],combinations:  List[List[Int]], combination: List[Int] ): List[List[Int]] = {
+//  // if there are no more coins or if we run out of money ... return 0 
+//  if ( lcoins.isEmpty || money < 0) combinations
+//  else{
+//    if (money == 0 ) {println(combinations)
+//      combination::combinations
+//      
+//    }
+///* if the recursive subtraction leads to 0 money left - a prefect division hence return count +1 */
+//    else
+//     
+///* keep iterating ... sum over money and the rest of the coins and money - the first item and the full set of coins left*/
+//      loop(money, lcoins.tail,combinations,combination) + loop(money - lcoins.head,lcoins, combinations,lcoins.head::combination)
+//  }
+//}
+//
+//val x = loop(money, coins, Nil, Nil)
+//
+//x
+//}
+// 
+//    
+//            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 }

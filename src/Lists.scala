@@ -2,48 +2,43 @@ object Lists {
 
   def main(args: Array[String]) {
     //    val list0 = List(5,2,1)
-      
+    val list0 = List(2,4,3,5,6,4,5,6,7,8)  
     val list1 = List(1,2,5)
     println(CombList(10,list1))
-    //    print("hello")
-    //    println(list0)
-    //    val lol = List(Nil)
+        print("hello")
+        println(list0)
+        val lol = List(Nil)
    
-    //    println(lol::list1)
-    //    
-    //   
-    //    val insertSorted = insertSort(list0)
-    //    insertSorted.foreach{println}
-    //    
-    //    val zeichen = zählZeichen("test hallo")
-    //    zeichen.foreach(println)
-    //    
-    //    val revList = revFast(list0)
-    //    revList.foreach{println}
-    //    
-    //    println(time(revSlow(list0)))
-    //    println(time(revFast(list0)))
+        println(lol::list1)
+        
+       
 
-    //    
-    //    println(time(mergeSort(list0)))
-    //    println(time(insertSort(list0)))
+        
+        val revList = revFast(list0)
+        revList.foreach{println}
+        
 
-    //    println{length(list0)}
-    //        println("Hello")
-    //    val test = uniqlist(list0)
-    //    test.foreach(println)
-    //     println("Hello")
-    //     if( balanced(("()()()()").toList)){
-    //     print("balanced!")}
-    //    else {
-    //      print("Unbalanced!")
-    //    }
 
-//    val x = List(List(1,2,3))
-//    val y = List(List(4,5,6))
-//    print(mergeLists(x,y))
-//    
-//    print(filter(list1, (x: Int) => x == 1))
+
+        println{length(list0)}
+            println("Hello")
+        val test = uniqlist(list0)
+        test.foreach(println)
+        
+        
+        
+        
+         if( balanced(("()()()()").toList)){
+           print("balanced!")}
+        else {
+          print("Unbalanced!")
+        }
+        print(zählZeichen("Hallo"))
+    val x = List(List(1,2,3))
+    val y = List(List(4,5,6))
+    print(mergeLists(x,y))
+    
+    print(filter(list1, (x: Int) => x == 1))
   }
 
   def filter(l: List[Int], bleibtdrin: Int => Boolean): List[Int] = {
@@ -58,12 +53,27 @@ object Lists {
       if (l == Nil) List((c, 1))
       else if (l.head._1 == c) (c, l.head._2 + 1) :: l.tail
       else l.head :: hochzählen(c, l.tail)
-    }
-
+    } 
     if (s.isEmpty) Nil
     else hochzählen(s.head, zählZeichen(s.tail))
 
   }
+  
+    
+  
+  
+  
+  def zählZeichenOne(s: String): List[(Char,Int)] = {
+    def hochzählen(c: Char, l: List[(Char,Int)]): List [(Char,Int)] = {
+      
+    }
+    
+    
+  } 
+  
+  
+  
+  
 
   def insertSort(l: List[Int]): List[Int] =
     if (l == Nil) Nil
@@ -192,8 +202,7 @@ object Lists {
     else if (i == 1) remove(l.tail, i - 1)
     else l.head :: remove(l.tail, i - 1)
   }
-  //        def revFast(l: List[Int]): List[Int] = {
-  //    def rev1(alt: List[Int], neu: List[Int]): List[Int] = {
+
   def uniqlist(l: List[Int]): List[Int] = {
     def uniqlist1(l: List[Int], i: Int): Boolean = {
       if (l == Nil) false
@@ -219,49 +228,51 @@ object Lists {
     balanced1(s, 0);
   }
 
-  def countChange(money: Int, coins: List[Int]): Int = {
+  def münzStückl(geld: Int, münzen: List[Int]): Int = {
 
-    def loop(money: Int, lcoins: List[Int], count: Int): Int = {
-      // if there are no more coins or if we run out of money ... return 0 
-      if (lcoins.isEmpty || money < 0) 0
+    def münzStückl1(geld: Int, münzen: List[Int], count: Int): Int = {
+      //wenn alle Münzen linke Iteration Abbruch, wenn Geld unter 0 rechte Iteration Abbruch
+      if (münzen.isEmpty || geld < 0) 0
       else {
-        if (money == 0) count + 1
-        /* if the recursive subtraction leads to 0 money left - a prefect division hence return count +1 */
+        //wenn Geld auf 0 kommt, ist eine mögliche Kombination gefunden, somit count+1
+        if (geld == 0) count + 1
+        
         else
 
-          /* keep iterating ... sum over money and the rest of the coins and money - the first item and the full set of coins left*/
-          loop(money, lcoins.tail, count) + loop(money - lcoins.head, lcoins, count)
+          //Linker Aufruf für Iteration der Münzen, rechter Aufruf für Bildung der Kombinationen 
+          münzStückl1(geld, münzen.tail, count) + münzStückl1(geld - münzen.head, münzen, count)
       }
     }
 
-    loop(money, coins, 0)
+    münzStückl1(geld, münzen, 0)
 
   }
 
-//  def countChangeComb(money: Int, coins: List[Int]): Int = {
-//
-//    def loop(money: Int, lcoins: List[Int], count: Int, combination: List[Int]): Int = {
-//      // if there are no more coins or if we run out of money ... return 0 
-//      if (lcoins.isEmpty || money < 0) 0
-//      else {
-//        if (money == 0) {
-//          println(combinations)
-//          count + 1
-//
-//        } /* if the recursive subtraction leads to 0 money left - a prefect division hence return count +1 */ else
-//
-//          /* keep iterating ... sum over money and the rest of the coins and money - the first item and the full set of coins left*/
-//          loop(money, lcoins.tail, count, combinations) + loop(money - lcoins.head, lcoins, count, lcoins.head :: combination)
-//      }
-//    }
-//
-//    loop(money, coins, 0, Nil)
-//
-//  }
-//
-//  
-//  
-//  
+  
+  
+  
+  def münzStücklKomb(geld: Int, münzen: List[Int]): Int = {
+
+    def münzStückl1(geld: Int, münzen: List[Int], count: Int, kombination: List[Int]): Int = {
+      if (münzen.isEmpty || geld < 0) 0
+      else {
+        if (geld == 0) {
+          println(kombination)
+          count + 1
+
+        } 
+        else
+          münzStückl1(geld, münzen.tail, count, kombination) + münzStückl1(geld - münzen.head, münzen, count, münzen.head :: kombination)
+      }
+    }
+
+    münzStückl1(geld, münzen, 0, Nil)
+
+  }
+
+  
+  
+  
   
   
   
@@ -281,16 +292,15 @@ object Lists {
   def CombList(money: Int, coins: List[Int]): List[List[Int]] = {
 
     def loop(money: Int, lcoins: List[Int], comb1: List[Int], combinations: List[List[Int]]): List[List[Int]] = {
-      // if there are no more coins or if we run out of money ... return 0 
       if (lcoins.isEmpty || money < 0) combinations
       else {
         if (money == 0) {
           comb1 :: combinations
 
-        } /* if the recursive subtraction leads to 0 money left - a prefect division hence return count +1 */
+        }
         else
 
-          /* keep iterating ... sum over money and the rest of the coins and money - the first item and the full set of coins left*/
+   
           mergeLists(loop(money, lcoins.tail, comb1, combinations), loop(money - lcoins.head, lcoins, lcoins.head :: comb1, combinations))
       }
     }

@@ -63,14 +63,14 @@ object Lists {
   
   
   
-  def zählZeichenOne(s: String): List[(Char,Int)] = {
-    def hochzählen(c: Char, l: List[(Char,Int)]): List [(Char,Int)] = {
-      
-    }
-    
-    
-  } 
-  
+//  def zählZeichenOne(s: String): List[(Char,Int)] = {
+//    def hochzählen(c: Char, l: List[(Char,Int)]): List [(Char,Int)] = {
+//      
+//    }
+//    
+//    
+//  } 
+//  
   
   
   

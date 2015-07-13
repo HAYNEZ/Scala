@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Webserver</name>
+=======
+	<name>Test</name>
+>>>>>>> 2613be2d24869ec4b8cc464cb7b9218aff70b9e7
 	<comment></comment>
 	<projects>
 	</projects>
